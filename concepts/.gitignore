@@ -1,0 +1,11 @@
+.idea/*
+!.idea/modules.xml
+!.idea/misc.xml
+.idea/workspace.xml
+.idea/usage.statistics.xml
+.idea/shelf/
+
+practice/*
+!practice/README.md
+
+solution/*
