@@ -1,8 +1,11 @@
 package com.evaitcs.spring.core.di.model;
 
+import lombok.Builder;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+@Builder
 public class User {
 
   private long id;

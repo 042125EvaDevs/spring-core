@@ -14,7 +14,7 @@ public class UserManagementApplication {
 
     UserService userService = applicationContext.getBean(UserService.class);
 
-    User user = userService.createUser();
+    User user = userService.createUser("John", "John@doe.com");
 
     System.out.println(user);
   }
