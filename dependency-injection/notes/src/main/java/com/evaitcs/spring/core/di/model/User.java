@@ -14,19 +14,34 @@ public class User {
 
   private String email;
 
+  private String password;
+
   private Address address;
 
   private int phoneNum;
 
-  public User (long id, String name, String email, Address address, int phoneNum){
+  public User(long id, String name, String email, String password, Address address, int phoneNum) {
     this.id = id;
     this.name = name;
     this.email = email;
+    this.password = password;
+    this.address = address;
+    this.phoneNum = phoneNum;
+  }
+
+  public User(String name, String email, String password, Address address, int phoneNum) {
+    this.name = name;
+    this.email = email;
+    this.password = password;
     this.address = address;
     this.phoneNum = phoneNum;
   }
 
   public User() {}
+
+  public String getPassword() {
+    return password;
+  }
 
   public long getId() {
     return id;
@@ -84,6 +99,7 @@ public class User {
       ", email='" + email + '\'' +
       ", address=" + address +
       ", phoneNum=" + phoneNum +
+
       '}';
   }
 }

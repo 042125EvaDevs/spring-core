@@ -5,23 +5,24 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.Objects;
-import java.util.Optional;
 
 @Getter
 @Setter
 public class Address {
 
-  private Integer buildingNumber;
+  private Long id;
 
-  private String streetName;
+  private Integer buildingNumber = 0;
 
-  private String city;
+  private String streetName = "";
 
-  private String state;
+  private String city = "";
 
-  private Integer zipCode;
+  private String state = "";
 
-  private String unitNumber;
+  private Integer zipCode = 0;
+
+  private String unitNumber = "";
 
   public Address() {};
 
@@ -30,12 +31,18 @@ public class Address {
   }
 
   public static class Builder {
+    private Long id;
     private Integer buildingNumber;
     private String streetName;
     private String city;
     private String state;
     private Integer zipCode;
     private String unitNumber;
+
+    public Builder id(Long buildingNumber) {
+      this.id = Objects.requireNonNull(buildingNumber, "buildingNumber must not be null");
+      return this;
+    }
 
     public Builder buildingNumber(Integer buildingNumber) {
       this.buildingNumber = Objects.requireNonNull(buildingNumber, "buildingNumber must not be null");
@@ -76,6 +83,7 @@ public class Address {
       address.setState(this.state);
       address.setZipCode(this.zipCode);
       address.setUnitNumber(this.unitNumber);
+      address.setId(this.id);
       return address;
     }
   }

@@ -1,5 +1,6 @@
 package com.evaitcs.spring.core.di.service;
 
+import com.evaitcs.spring.core.di.model.Address;
 import com.evaitcs.spring.core.di.model.User;
 import com.evaitcs.spring.core.di.repository.UserRepository;
 
@@ -18,6 +19,8 @@ public class UserServiceImpl implements UserService {
     User newUser = new User();
     newUser.setName(name);
     newUser.setEmail(email);
+    newUser.setAddress(new Address());
+
 
     newUser = userRepository.save(newUser);
 
