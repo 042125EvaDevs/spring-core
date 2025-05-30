@@ -12,8 +12,9 @@ public class Book {
   @Column
   private String title;
 
-  @Column
-  private String author;
+  @ManyToOne(cascade = CascadeType.ALL)
+  @JoinColumn(name = "author_id")
+  private Author author;
 
 
   public Long getId() {
@@ -28,11 +29,11 @@ public class Book {
     this.title = title;
   }
 
-  public String getAuthor() {
+  public Author getAuthor() {
     return author;
   }
 
-  public void setAuthor(String author) {
+  public void setAuthor(Author author) {
     this.author = author;
   }
 }

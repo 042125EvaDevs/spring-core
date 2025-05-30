@@ -4,6 +4,8 @@ import com.evaitcs.spring.core.lms.dto.CreateBookRequest;
 import com.evaitcs.spring.core.lms.dto.UpdateBookRequest;
 import com.evaitcs.spring.core.lms.model.Book;
 import com.evaitcs.spring.core.lms.service.BookService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,38 +23,39 @@ public class BookController {
   }
 
   @GetMapping("")
-  public List<Book> getAllBooks() {
+  public ResponseEntity<List<Book>> getAllBooks() {
     List<Book> books = bookService.getAllBooks();
 
-    return books;
+    return ResponseEntity.status(HttpStatus.OK)
+      .body(books);
   }
 
   @GetMapping("/{id}")
-  public Book getBook(@PathVariable Long id) {
+  public ResponseEntity<Book> getBook(@PathVariable Long id) {
     Book book = bookService.getBook(id);
 
-    return book;
+    return ResponseEntity.ok(book);
   }
 
   @PostMapping("")
-  public Book createBook(
+  public ResponseEntity<Book> createBook(
     @RequestBody
     CreateBookRequest createBookRequest
   ) {
     Book book = bookService.createBook(createBookRequest);
 
-    return book;
+    return ResponseEntity.status(HttpStatus.CREATED).body(book);
   }
 
   @PutMapping("/{id}")
-  public Book updateBook(
+  public ResponseEntity<Book> updateBook(
     @RequestBody
     UpdateBookRequest updateBookRequest,
     @PathVariable("id")
     Long bookId
   ) {
       Book updatedBook = bookService.updateBook(bookId, updateBookRequest);
-      return updatedBook;
+      return ResponseEntity.ok(updatedBook);
   }
 
   @DeleteMapping("/{id}")
