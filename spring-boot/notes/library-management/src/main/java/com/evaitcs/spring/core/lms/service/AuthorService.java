@@ -1,18 +1,20 @@
 package com.evaitcs.spring.core.lms.service;
 
+import com.evaitcs.spring.core.lms.dto.AuthorDetails;
 import com.evaitcs.spring.core.lms.dto.CreateAuthorRequest;
-import com.evaitcs.spring.core.lms.model.Author;
+import com.evaitcs.spring.core.lms.dto.UpdateAuthorRequest;
 
 import java.util.List;
 
 public interface AuthorService {
 
-  List<Author> getAllAuthors();
+  List<AuthorDetails> getAllAuthors();
 
-  Author deleteAuthor(Long id);
+  AuthorDetails deleteAuthor(Long id);
 
-  Author getAuthor(Long id);
+  AuthorDetails getAuthor(Long id);
 
-  Author createAuthor(CreateAuthorRequest createAuthorRequest);
+  AuthorDetails createAuthor(CreateAuthorRequest createAuthorRequest);
 
+  AuthorDetails updateAuthor(Long authorId, UpdateAuthorRequest updateAuthorRequest);
 }

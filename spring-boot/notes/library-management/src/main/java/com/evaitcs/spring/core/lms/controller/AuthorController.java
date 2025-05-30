@@ -1,6 +1,8 @@
 package com.evaitcs.spring.core.lms.controller;
 
+import com.evaitcs.spring.core.lms.dto.AuthorDetails;
 import com.evaitcs.spring.core.lms.dto.CreateAuthorRequest;
+import com.evaitcs.spring.core.lms.dto.UpdateAuthorRequest;
 import com.evaitcs.spring.core.lms.model.Author;
 import com.evaitcs.spring.core.lms.service.AuthorService;
 import org.springframework.http.HttpStatus;
@@ -22,34 +24,45 @@ public class AuthorController {
 
   @GetMapping("")
   @ResponseStatus(HttpStatus.I_AM_A_TEAPOT)
-  public ResponseEntity<List<Author>> getAllAuthors(){
-    List<Author> authors = authorService.getAllAuthors();
+  public ResponseEntity<List<AuthorDetails>> getAllAuthors(){
+    List<AuthorDetails> authors = authorService.getAllAuthors();
     return ResponseEntity.status(HttpStatus.OK).body(authors);
   }
 
   @GetMapping ("/{id}")
-  public ResponseEntity<Author> getAuthor(@PathVariable Long id){
+  public ResponseEntity<AuthorDetails> getAuthor(@PathVariable Long id){
 
-    Author author = authorService.getAuthor(id);
+    AuthorDetails author = authorService.getAuthor(id);
     return ResponseEntity.ok(author);
   }
 
 
 
   @PostMapping("")
-  public ResponseEntity<Author> createAuthor(
+  public ResponseEntity<AuthorDetails> createAuthor(
     @RequestBody
     CreateAuthorRequest createAuthorRequest
   ){
-    Author author = authorService.createAuthor(createAuthorRequest);
+    AuthorDetails author = authorService.createAuthor(createAuthorRequest);
     return ResponseEntity.status(HttpStatus.CREATED).body(author);
 
   }
 
   @DeleteMapping("")
   public String deleteAuthor(@PathVariable Long id){
-    Author removeAuthor = authorService.deleteAuthor(id);
-    return "Removed Author " + removeAuthor.getFullName();
+    AuthorDetails removeAuthor = authorService.deleteAuthor(id);
+    return "Removed Author " + removeAuthor.name();
+  }
+
+  @PutMapping("/{id}")
+  public ResponseEntity<AuthorDetails> updateAuthor(
+    @RequestBody
+    UpdateAuthorRequest updateAuthorRequest,
+    @PathVariable("id")
+    Long authorId
+  ) {
+    AuthorDetails updatedAuthor = authorService.updateAuthor(authorId, updateAuthorRequest);
+    return ResponseEntity.ok(updatedAuthor);
   }
 }
 
