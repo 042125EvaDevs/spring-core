@@ -12,7 +12,7 @@ public class Book {
   @Column
   private String title;
 
-  @ManyToOne(cascade = CascadeType.ALL)
+  @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.PERSIST, CascadeType.REFRESH })
   @JoinColumn(name = "author_id")
   private Author author;
 
