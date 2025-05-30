@@ -9,7 +9,6 @@ import java.util.List;
 
 public class AuthorMapper {
 
-
   public static List<AuthorDetails> mapToDetailsList(List<Author> all) {
     return all.stream()
       .map(AuthorMapper::mapToDetails)
