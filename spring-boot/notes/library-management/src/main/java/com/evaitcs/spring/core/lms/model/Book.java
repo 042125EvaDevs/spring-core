@@ -16,7 +16,6 @@ public class Book {
   @JoinColumn(name = "author_id")
   private Author author;
 
-
   public Long getId() {
     return id;
   }
@@ -35,5 +34,14 @@ public class Book {
 
   public void setAuthor(Author author) {
     this.author = author;
+  }
+
+  public Book(Long id, String title, Author author) {
+    this.id = id;
+    this.title = title;
+    this.author = author;
+  }
+
+  public Book() {
   }
 }

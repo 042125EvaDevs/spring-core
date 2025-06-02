@@ -44,7 +44,7 @@ public class BookServiceImpl implements BookService {
     Book book = BookMapper.mapToBook(createBookRequest);
     book.setAuthor(author);
 
-    repository.save(book);
+    book = repository.save(book);
 
     return BookMapper.mapToDetails(book);
   }

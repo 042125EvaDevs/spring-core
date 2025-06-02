@@ -1,14 +1,11 @@
 package com.evaitcs.spring.core.lms.model;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Getter
-@Setter
+
 @Entity
 public class Author {
 
@@ -26,8 +23,6 @@ public class Author {
   private List<Book> books = new ArrayList<>();
 
   @Transient
-  private String fullName;
-
   public String getFullName() {
     return this.firstName + " " + this.lastName;
   }
@@ -41,4 +36,43 @@ public class Author {
   }
 
   public Author() {}
+
+  public List<Book> getBooks() {
+    return books;
+  }
+
+  public Long getId() {
+    return id;
+  }
+
+  public String getFirstName() {
+    return firstName;
+  }
+
+  public void setFirstName(String firstName) {
+    this.firstName = firstName;
+  }
+
+  public String getLastName() {
+    return lastName;
+  }
+
+  public void setLastName(String lastName) {
+    this.lastName = lastName;
+  }
+
+  public void setBooks(List<Book> books) {
+    this.books = books;
+  }
+
+
+  @Override
+  public String toString() {
+    return "Author{" +
+      "id=" + id +
+      ", firstName='" + firstName + '\'' +
+      ", lastName='" + lastName + '\'' +
+      ", books=" + books +
+      '}';
+  }
 }
